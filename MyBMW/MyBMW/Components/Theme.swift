@@ -14,6 +14,7 @@ enum ARNColor {
     static var textSecondary: Color { Color(uiColor: .secondaryLabel) }
     static var textTertiary: Color { Color(uiColor: .tertiaryLabel) }
     static var textPrimaryDark: Color { Color(uiColor: .lightText) }
+    static var textPrimaryWhite: Color { Color(uiColor: .white) }
 
     // MARK: Background / Surfaces / Borders
     static var background: Color { Color(uiColor: .systemBackground) }

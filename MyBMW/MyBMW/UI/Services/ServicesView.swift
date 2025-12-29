@@ -5,14 +5,9 @@ struct ServicesView: View {
 
     var body: some View {
         ARNList {
-//            ARNListItem(
-//                title: "Connected Drive upgrades".uppercased(),
-//                description: "Manage and enable digital features and connectivity services of your BMW."
-//            ) {
-//                //TODO: image with title component should be here
-//                nav.servicesPath.append(ServicesRoute.appointments)
-//            }
-//            
+            ServicesHeader()
+                .padding(.horizontal, -20)
+            
             ARNGroupedSectionCard(
                 "Connected Drive upgrades",
                 subtitle: "Manage and enable digital features and connectivity services of your BMW.",
@@ -123,5 +118,76 @@ struct ServicesView: View {
                 ])
         }
         .navigationTitle("BMW Services & Store")
+        .navigationBarTitleDisplayMode(.inline)
+    }
+}
+
+struct ServicesHeader: View {
+    let height: CGFloat = 220
+    let bgHeight: CGFloat = 150
+    let bottomClearHeight: CGFloat = 70
+
+    var body: some View {
+        ZStack(alignment: .bottom) {
+
+            // Base: BG image + bottom clear block (combined)
+            VStack(spacing: 0) {
+                ZStack(alignment: .leading) {
+                    Image("service_bg")
+                        .resizable()
+                        .scaledToFill()
+                        .frame(height: bgHeight)
+                        .frame(maxWidth: .infinity)
+                        .clipped()
+
+                    VStack(alignment: .leading, spacing: 2) {
+                        Text("Hey Abhyuday !")
+                            .foregroundStyle(ARNColor.textPrimaryWhite)
+                            .font(.system(size: 16, weight: .bold))
+
+                        Text("ALL\nSERVICES")
+                            .foregroundStyle(ARNColor.textPrimaryWhite)
+                            .font(.system(size: 40, weight: .bold))
+                            .lineSpacing(-2)
+                    }
+                    .padding(.leading, 16)
+                    .padding(.top, 16)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                }
+
+                Color.clear
+                    .frame(height: bottomClearHeight)
+                    .frame(maxWidth: .infinity)
+            }
+            .frame(height: height)
+            .frame(maxWidth: .infinity)
+            .clipped()
+
+            // Gradient on top of entire header
+            LinearGradient(
+                colors: [
+                    .clear,
+                    Color.black.opacity(0.35),
+                    Color.black.opacity(0.75)
+                ],
+                startPoint: .top,
+                endPoint: .bottom
+            )
+            .frame(height: height)
+            .frame(maxWidth: .infinity)
+            .allowsHitTesting(false)
+
+            // Car image anchored to bottom-right
+            Image("2024-BMW-X3-Color-Phytonic Blue Metallic")
+                .resizable()
+                .scaledToFit()
+                .frame(height: 140)
+                .frame(maxWidth: .infinity, alignment: .trailing)
+                .padding(.trailing, -70)
+                .padding(.bottom, 8)
+        }
+        .frame(height: height)
+        .frame(maxWidth: .infinity)
+        .ignoresSafeArea(edges: .top)
     }
 }

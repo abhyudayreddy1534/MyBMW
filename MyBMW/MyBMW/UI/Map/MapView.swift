@@ -6,8 +6,8 @@ struct MapView: View {
     var body: some View {
         ARNList {
             ARNListItem(
-                title: "Where is my BMW?",
-                description: "4252 Watson Way, North Richland Hills, TX 76180",
+                title: Constants.Map.carTitleTitle,
+                description: Constants.Home.vehicleAddress,
                 accessory: .icon(.chevronDown)
             ) {
             }
